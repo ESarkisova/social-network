@@ -1,0 +1,32 @@
+.info{
+	position: relative;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	margin-bottom: 20px;
+	color: #fff;
+}
+.ava img{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+.name{
+	margin-left: 20px;
+	font-size: 30px;
+	font-weight: bold;
+	color: #6f5d5d;
+}
+.job{
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	font-size: 14px;
+}
+.status{
+	margin: 0 0 20px 0;
+	font-size: 18px;
+}

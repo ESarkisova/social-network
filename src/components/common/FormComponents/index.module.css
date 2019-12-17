@@ -1,0 +1,21 @@
+.formControl {
+    position: relative;
+    display: block;
+}
+.formControl input,
+.formControl textarea {
+    outline: none;
+    border: 1px solid gray;
+    background-color: #fff;
+}
+.formControl.error input,
+.formControl.error textarea {
+    border-color: red;
+}
+.errorMessage {
+    display: block;
+    color: red;
+    font-size: 12px;
+    margin: 0;
+    padding: 5px 0px;
+}

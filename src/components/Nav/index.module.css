@@ -1,0 +1,12 @@
+nav{
+  grid-area: n;
+  padding: 10px;
+  background-color: #f8a5c2;
+}
+.item{
+	display: block;
+}
+.active{
+	color: #fff;
+	text-decoration: none;
+}

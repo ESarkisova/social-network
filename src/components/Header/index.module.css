@@ -1,0 +1,19 @@
+
+.header{
+  grid-area: h;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f78fb3;
+  padding: 10px;
+  color: #fff;
+}
+.header img{
+  max-height:100%
+}
+.link{
+  cursor: pointer;
+}
+.link:hover{
+  text-decoration: underline;
+}

@@ -1,0 +1,17 @@
+.pagination__wrap{
+    padding: 10px;
+    word-break: break-word;
+    text-align: center;
+    font-size: 18px;
+    color: #333333;
+}
+.pagination__item{
+    padding: 5px;
+    cursor: pointer;
+}
+.pagination__item:hover{
+    font-weight: bold;
+}
+.pagination__item_current{
+    font-weight: bold;
+}

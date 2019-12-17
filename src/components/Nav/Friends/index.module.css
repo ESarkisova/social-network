@@ -1,0 +1,25 @@
+.active{
+	color: #fff;
+	text-decoration: none;
+}
+.friends__wrapper{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.friend{
+    padding: 5px;
+    margin: 5px;
+}
+.friend__ava{
+    display: block;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+.friend__name{
+    font-size: 16px;
+}

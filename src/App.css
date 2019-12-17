@@ -1,0 +1,30 @@
+.app-wrapper{
+	width: 1200px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-rows: 60px 1fr;
+	grid-template-columns: 2fr 10fr;
+	grid-gap: 10px;
+	grid-template-areas: 
+	"h h"
+	"n c";
+	color: #303952;
+}
+
+.content{
+	position: relative;
+	grid-area: c;
+	background-color: #f7d794;
+}
+ul{
+	padding-left: 15px;
+	list-style-type: none;
+}
+a{
+	color: #546de5;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+	color: #fff;
+}

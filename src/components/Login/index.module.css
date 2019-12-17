@@ -1,0 +1,23 @@
+.login__wrapp{
+    padding: 10px;
+}
+.form_login > input{
+    margin: 10px 0;
+    padding: 5px 10px;
+    border: none;
+
+}
+.form_login > input,
+.form_login > button{
+    display: block;
+    outline: none;
+}
+.captcha{
+    max-width: 100px;
+    vertical-align: middle;
+}
+.captcha__input{
+    width: 68px;
+    vertical-align: middle;
+
+}
