@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import cn from './index.module.css';
+import cn from '../index.module.css';
 
 const ProfileStatus = (props) => {
     let [editStatusMode, setEditStatusMode] = useState(false);
@@ -20,12 +20,19 @@ const ProfileStatus = (props) => {
         setStatus(e.currentTarget.value);
     };
 
+
         return <div className={cn.status}>
-            {editStatusMode ?
-                <input type="text"  value={status} autoFocus={true} onBlur={toggleEditStatusMode} onChange={onChangeStatusText}/>
-                : <span onDoubleClick={toggleEditStatusMode}>{status || "Input your status..."}</span>}
+            {props.isOwner?
+                editStatusMode ?
+                    <input type="text"  value={status} autoFocus={true} onBlur={toggleEditStatusMode} onChange={onChangeStatusText}/>
+                    : <span onDoubleClick={toggleEditStatusMode}>{status || "Input your status..."}</span>
+                : <span>{status}</span>
+            }
+
 
         </div>
+
+
 
 };
 

@@ -1,15 +1,19 @@
 import React from 'react';
 import cn from './index.module.css';
-import ProfileStatus from "./ProfileStatus";
-import noAvatarImage from "../../../assets/userpic.png";
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import ProfileAvatar from "./ProfileAvatar/ProfileAvatar";
 
-const ProfileInfo = ({profileInfo, status, setStatus}) => {
+const ProfileInfo = ({profileInfo, status, setStatus, isOwner, setAvatar, isLoadingAvatar}) => {
+
     return (
         <>
             <div className={cn.info}>
-                <div className={cn.ava}>
-                    <img src={profileInfo.photos.large ? profileInfo.photos.large : noAvatarImage} alt={profileInfo.fullName}/>
-                </div>
+                <ProfileAvatar
+                    isLoadingAvatar={isLoadingAvatar}
+                    profileInfo={profileInfo}
+                    isOwner={isOwner}
+                    setAvatar={setAvatar} />
+
                 <h2 className={cn.name}>{profileInfo.fullName}</h2>
                 <div className={cn.job}>
                     {profileInfo.lookingForAJob ?
@@ -18,7 +22,7 @@ const ProfileInfo = ({profileInfo, status, setStatus}) => {
                         "Не ищу работу"}
                 </div>
             </div>
-            <ProfileStatus status={status} setStatus = {setStatus}/>
+            <ProfileStatus status={status} setStatus = {setStatus} isOwner = {isOwner}/>
         </>
     );
 };

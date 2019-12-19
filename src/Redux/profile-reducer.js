@@ -5,7 +5,9 @@ const prefix = (actionType) => "profile/" + actionType;
 
 const ADD_POST = prefix('ADD_POST'),
     SET_PROFILE_INFO = prefix('SET_PROFILE_INFO'),
-    CHANGE_STATUS_TEXT = prefix('CHANGE_STATUS_TEXT');
+    CHANGE_STATUS_TEXT = prefix('CHANGE_STATUS_TEXT'),
+    CHANGE_AVATAR = prefix('CHANGE_AVATAR'),
+    CHANGE_IS_LOADING_AVATAR = prefix('CHANGE_IS_LOADING_AVATAR');
 
 let initialState = {
     postList: [
@@ -29,7 +31,8 @@ let initialState = {
         }
     ],
     profileInfo: null,
-    status: null
+    status: null,
+    isLoadingAvatar: false
 };
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -59,6 +62,19 @@ const profileReducer = (state = initialState, action) => {
                 status: action.status
             };
 
+        case CHANGE_AVATAR:
+
+            return {
+                ...state,
+                profileInfo: {...state.profileInfo, photos: action.photos}
+            };
+        case CHANGE_IS_LOADING_AVATAR:
+
+            return {
+                ...state,
+                isLoadingAvatar: action.isLoadingAvatar
+            };
+
 
         default:
             return state;
@@ -86,6 +102,14 @@ export const changeStatus = (status) => ({
     type: CHANGE_STATUS_TEXT,
     status
 });
+export const changeAvatar= (photos) => ({
+    type: CHANGE_AVATAR,
+    photos
+});
+export const changeLoadingAvatar= (isLoadingAvatar) => ({
+    type: CHANGE_IS_LOADING_AVATAR,
+    isLoadingAvatar
+});
 
 export const getProfile = (userId) => {
     return async (dispatch) => {
@@ -105,6 +129,19 @@ export const setStatus = (status) => {
         if (data.resultCode === 0) {
             dispatch(changeStatus(status));
         }
+
+    }
+};
+
+
+export const setAvatar = (img) => {
+    return async (dispatch) => {
+        dispatch(changeLoadingAvatar(true));
+        const data = await profileAPI.setAvatar(img);
+        if (data.resultCode === 0) {
+            dispatch(changeAvatar(data.data.photos));
+        }
+        dispatch(changeLoadingAvatar(false));
 
     }
 };

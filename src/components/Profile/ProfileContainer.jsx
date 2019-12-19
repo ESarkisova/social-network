@@ -3,7 +3,7 @@ import Profile from "./Profile";
 import {
     getProfile,
     getStatus,
-    onAddPost,
+    onAddPost, setAvatar,
     setStatus
 } from "../../Redux/profile-reducer";
 import {connect} from "react-redux";
@@ -23,17 +23,18 @@ class ProfileAPI extends React.Component {
         }
     }
 
-    componentWillUpdate(nextProps, nextState) {
+    componentDidUpdate(nextProps, nextState) {
         let userID = this.props.match.params.userID || this.props.authUser,
             userIDNext = nextProps.match.params.userID || nextProps.authUser;
         if (!userIDNext) {this.props.history.push('/login');}
         if (userIDNext && userIDNext != userID) {
             this.props.getProfile(userIDNext);
+            this.props.getStatus(userIDNext);
         }
     }
 
     render() {
-        return <Profile {...this.props}/>
+        return <Profile {...this.props} isOwner={this.props.authUser && ((+this.props.authUser === +this.props.match.params.userID) || !this.props.match.params.userID)}/>
     }
 
 }
@@ -44,12 +45,13 @@ let mapStateToProps = (state) => {
         postList: state.profilePage.postList,
         profileInfo: state.profilePage.profileInfo,
         status: state.profilePage.status,
-        authUser: state.auth.userId
+        authUser: state.auth.userId,
+        isLoadingAvatar: state.profilePage.isLoadingAvatar
     }
 };
 
 
 export default   compose(
     withRouter,
-    connect(mapStateToProps, {onAddPost, getProfile, getStatus, setStatus}))(ProfileAPI);
+    connect(mapStateToProps, {onAddPost, getProfile, getStatus, setStatus, setAvatar}))(ProfileAPI);
 

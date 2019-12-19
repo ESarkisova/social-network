@@ -28,11 +28,19 @@ export const profileAPI = {
             .then(response => response.data);
     },
     getStatus(userId) {
-        return instance.get(`/profile/status/${userId}`)
+        return instance.get(`profile/status/${userId}`)
             .then(response => response.data);
     },
     setStatus(status) {
-        return instance.put('/profile/status', {status})
+        return instance.put('profile/status', {status})
+            .then(response => response.data);
+    },
+    setAvatar(img) {
+        let formData = new FormData();
+        formData.append("image", img);
+        const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+
+        return instance.put('profile/photo', formData, config)
             .then(response => response.data);
     }
 };

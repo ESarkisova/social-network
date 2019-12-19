@@ -36,7 +36,12 @@ const Profile = (props) => {
     };
     return (
         <div className={cn.profile}>
-            <ProfileInfo profileInfo={props.profileInfo} status={props.status} setStatus={props.setStatus}/>
+            <ProfileInfo profileInfo={props.profileInfo}
+                         isOwner = {props.isOwner}
+                         status={props.status}
+                         setStatus={props.setStatus}
+                         setAvatar={props.setAvatar}
+                         isLoadingAvatar={props.isLoadingAvatar}/>
             <NewPostForm onSubmit = {addPost}/>
             <div className={cn.posts}>
                 {
