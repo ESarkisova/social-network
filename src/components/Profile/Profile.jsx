@@ -41,7 +41,11 @@ const Profile = (props) => {
                          status={props.status}
                          setStatus={props.setStatus}
                          setAvatar={props.setAvatar}
-                         isLoadingAvatar={props.isLoadingAvatar}/>
+                         isLoadingAvatar={props.isLoadingAvatar}
+                         setProfile = {props.setProfile}
+                         showEditProfile = {props.showEditProfile}
+                         changeShowEditProfile = {props.changeShowEditProfile}
+                         isSavingProfile = {props.isSavingProfile}/>
             <NewPostForm onSubmit = {addPost}/>
             <div className={cn.posts}>
                 {

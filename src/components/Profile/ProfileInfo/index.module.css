@@ -7,6 +7,15 @@
 	display: flex;
 	margin-bottom: 20px;
 	color: #fff;
+	justify-content: space-between;
+}
+.infoLeft{
+	display: flex;
+	justify-content: space-between;
+}
+.ava{
+    position: relative;
+	height: fit-content;
 }
 .ava>img{
 	width: 100px;
@@ -14,15 +23,12 @@
 	border-radius: 50%;
 	object-fit: cover;
 }
-.ava.loading{
-	position: relative;
-}
-.ava.loading:after{
+
+.loading:after{
 	content: '';
 	position: absolute;
-	top: 35px;
-	left: 35px;
-	right: 35px;
+	top: 50%;
+	left: 50%;
 	width: 30px;
 	height: 30px;
 	-webkit-border-radius: 50%;
@@ -31,36 +37,44 @@
 	border: 2px solid #fff;
 	border-left: none;
 	animation: spin 1.5s ease-in-out infinite;
+	transform: translate(-50%, -50%);
 }
 
 @keyframes spin {
 	from {
-		transform: rotate(0deg);
+		transform: translate(-50%, -50%) rotate(0deg);
 	} to {
-		  transform: rotate(360deg);
+		  transform: translate(-50%, -50%) rotate(360deg);
 	  }
 }
-.ava.loading img{
+.loading > *{
 	opacity: .5;
 }
-.ava.loading .inputFile{
+.loading {
+	position: relative;
 	pointer-events: none;
 }
+.inputFile{
+    position: absolute;
+    bottom: 8px;
+    left: 35px;
+}
 .name{
-	margin-left: 20px;
+    margin: 10px 10px 0px 20px;
 	font-size: 30px;
 	font-weight: bold;
 	color: #6f5d5d;
 }
-.job{
-	position: absolute;
-	right: 20px;
-	top: 20px;
+.details{
+	position: relative;
+	width: 25%;
 	font-size: 14px;
 }
+
 .status{
-	margin: 0 0 20px 0;
-	font-size: 18px;
+    margin: 0 0 0 20px;
+    font-size: 18px;
+    color: #767272;
 }
 .inputFile {
 	display: block;
@@ -79,4 +93,19 @@
 	width: 30px;
 	height: 30px;
 	object-fit: contain;
+}
+.contactsItem {
+	margin: 3px 0px;
+	padding: 0 0 0 10px;
+}
+.detailsEditButton{
+	position: absolute;
+	right: 0;
+	bottom: -1px;
+	outline: none;
+	border: none;
+	background-color: #ffa500;
+	font-size: 14px;
+	color: inherit;
+	cursor: pointer;
 }

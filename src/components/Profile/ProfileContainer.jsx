@@ -1,9 +1,10 @@
 import React, {component} from 'react';
 import Profile from "./Profile";
 import {
+    changeShowEditProfile,
     getProfile,
     getStatus,
-    onAddPost, setAvatar,
+    onAddPost, setAvatar, setProfile,
     setStatus
 } from "../../Redux/profile-reducer";
 import {connect} from "react-redux";
@@ -46,12 +47,14 @@ let mapStateToProps = (state) => {
         profileInfo: state.profilePage.profileInfo,
         status: state.profilePage.status,
         authUser: state.auth.userId,
-        isLoadingAvatar: state.profilePage.isLoadingAvatar
+        isLoadingAvatar: state.profilePage.isLoadingAvatar,
+        showEditProfile: state.profilePage.showEditProfile,
+        isSavingProfile: state.profilePage.isSavingProfile,
     }
 };
 
 
 export default   compose(
     withRouter,
-    connect(mapStateToProps, {onAddPost, getProfile, getStatus, setStatus, setAvatar}))(ProfileAPI);
+    connect(mapStateToProps, {onAddPost, getProfile, getStatus, setStatus, setAvatar, setProfile, changeShowEditProfile}))(ProfileAPI);
 

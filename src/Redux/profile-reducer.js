@@ -1,13 +1,17 @@
 import {profileAPI} from "../DAL/api";
-import {reset} from "redux-form";
+import {reset, stopSubmit} from "redux-form";
+import {errorToObject} from "../components/common/validate/helper";
 
 const prefix = (actionType) => "profile/" + actionType;
+
 
 const ADD_POST = prefix('ADD_POST'),
     SET_PROFILE_INFO = prefix('SET_PROFILE_INFO'),
     CHANGE_STATUS_TEXT = prefix('CHANGE_STATUS_TEXT'),
     CHANGE_AVATAR = prefix('CHANGE_AVATAR'),
-    CHANGE_IS_LOADING_AVATAR = prefix('CHANGE_IS_LOADING_AVATAR');
+    CHANGE_IS_LOADING_AVATAR = prefix('CHANGE_IS_LOADING_AVATAR'),
+    CHANGE_SHOW_EDIT_PROFILE = prefix('CHANGE_SHOW_EDIT_PROFILE'),
+    CHANGE_IS_SAVING_PROFILE = prefix('CHANGE_IS_SAVING_PROFILE');
 
 let initialState = {
     postList: [
@@ -32,7 +36,10 @@ let initialState = {
     ],
     profileInfo: null,
     status: null,
-    isLoadingAvatar: false
+    isLoadingAvatar: false,
+    showEditProfile: false,
+    isSavingProfile: false
+
 };
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -75,6 +82,19 @@ const profileReducer = (state = initialState, action) => {
                 isLoadingAvatar: action.isLoadingAvatar
             };
 
+        case CHANGE_SHOW_EDIT_PROFILE:
+
+            return {
+                ...state,
+                showEditProfile: action.showEditProfile
+            };
+        case CHANGE_IS_SAVING_PROFILE:
+
+            return {
+                ...state,
+                isSavingProfile: action.isSavingProfile
+            };
+
 
         default:
             return state;
@@ -102,15 +122,22 @@ export const changeStatus = (status) => ({
     type: CHANGE_STATUS_TEXT,
     status
 });
-export const changeAvatar= (photos) => ({
+export const changeAvatar = (photos) => ({
     type: CHANGE_AVATAR,
     photos
 });
-export const changeLoadingAvatar= (isLoadingAvatar) => ({
+export const changeLoadingAvatar = (isLoadingAvatar) => ({
     type: CHANGE_IS_LOADING_AVATAR,
     isLoadingAvatar
 });
-
+export const changeShowEditProfile = (showEditProfile) => ({
+    type: CHANGE_SHOW_EDIT_PROFILE,
+    showEditProfile
+});
+export const changeIsSavingProfile = (isSavingProfile) => ({
+    type: CHANGE_IS_SAVING_PROFILE,
+    isSavingProfile
+});
 export const getProfile = (userId) => {
     return async (dispatch) => {
         const data = await profileAPI.getProfile(userId);
@@ -145,5 +172,25 @@ export const setAvatar = (img) => {
 
     }
 };
+export const setProfile = (profile) => {
+    return async (dispatch, getState) => {
+        dispatch(changeIsSavingProfile(true));
+        const data = await profileAPI.setProfile(profile);
+        if (data.resultCode === 0) {
+            dispatch(getProfile(getState().auth.userId));
+            dispatch(changeShowEditProfile(false));
+        } else {
+            const errorsObject = errorToObject(profile, data.messages);
+
+
+            let action = stopSubmit('editProfile', errorsObject);
+            dispatch(action);
+        }
+        dispatch(changeIsSavingProfile(false));
+
+    }
+};
+
+
 
 export default profileReducer;
