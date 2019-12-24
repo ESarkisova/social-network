@@ -9,19 +9,24 @@ const ProfileDetailsForm = (props) => {
 
     return (
         <form onSubmit={props.handleSubmit} className={props.isSavingProfile ? cn.loading : ''}>
-            <b>Полное имя: </b>
-            {createField("fullName",Input, "Введите имя...",[required],{type: "text"})}
-            <b>Обо мне: </b>
-            {createField("aboutMe",Textarea, "Напишите кратко о себе...",[required],)}
-            <b>Ищу работу: </b>
-            {createField("lookingForAJob",Input, "",[],{type: "checkbox"})}
-            <b>Ищу работу - описание: </b>
-            {createField("lookingForAJobDescription",Textarea, "Укажите профессиональные навыки...",[],)}
+            <div className={cn.fieldWrap}>
+                <b>Полное имя: </b>
+                {createField("fullName",Input, "Введите имя...",[required],{type: "text"})}</div>
+            <div className={cn.fieldWrap}>
+                <b>Обо мне: </b>
+                {createField("aboutMe",Textarea, "Напишите кратко о себе...",[required],)}</div>
+            <div className={cn.fieldWrap}>
+                <b>Ищу работу: </b>
+                {createField("lookingForAJob",Input, "",[],{type: "checkbox"})}</div>
+            <div className={cn.fieldWrap}>
+                <b>Ищу работу - описание: </b>
+                {createField("lookingForAJobDescription",Textarea, "Укажите профессиональные навыки...",[required],)}</div>
             <b>Контакты: </b><br/>
-            {Object.keys(props.profileInfo.contacts).map((key) => {
-                return <Contact key = {key} contactName = {key} />
-            })}
-
+            <div className={cn.fieldWrap}>
+                {Object.keys(props.profileInfo.contacts).map((key) => {
+                    return <Contact key = {key} contactName = {key} />
+                })}
+            </div>
             {props.error &&
             <ul className = {cnFormControl.errorMessage}>
                 {props.error}
@@ -30,7 +35,7 @@ const ProfileDetailsForm = (props) => {
 
             <hr/>
 
-            <button>Сохранить</button>
+            <button className={cn.detailsEditButton}>Сохранить</button>
         </form>
     )
 

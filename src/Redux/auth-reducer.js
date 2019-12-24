@@ -1,4 +1,4 @@
-import {authAPI} from "../DAL/api";
+import {authAPI, securityAPI} from "../DAL/api";
 import {stopSubmit} from 'redux-form';
 
 const prefix = (actionType) => "auth/" + actionType;
@@ -73,9 +73,10 @@ export const setAuth = (loginData) => {
 
         if (data.resultCode === 0) {
             dispatch(authMe());
-        } else if (data.resultCode === 10) {
-            dispatch(getCaptcha());
         } else {
+            if (data.resultCode === 10) {
+                dispatch(getCaptcha());
+            }
             let action = stopSubmit('login', {_error: data.messages.join(', ')});
             dispatch(action);
         }
@@ -86,7 +87,7 @@ export const setAuth = (loginData) => {
 
 export const getCaptcha = () => {
     return async (dispatch) => {
-        const data = await authAPI.getCaptcha();
+        const data = await securityAPI.getCaptcha();
         dispatch(setCaptcha(data.url));
     };
 };
