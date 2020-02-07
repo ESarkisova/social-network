@@ -3,7 +3,7 @@
 	text-decoration: none;
 }
 .friends__wrapper{
-    margin-top: 50px;
+    margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
 }

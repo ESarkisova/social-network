@@ -1,11 +1,11 @@
 import React from 'react';
 import cn from './index.module.css';
+import {Spin} from "antd";
 
 let Preloader = () => {
     return (
         <div className={cn.preloader__wrap}>
-            <div className={cn.preload__circle}></div>
-            <div className={`${cn.preload__circle} ${cn.preload__circle2}`}></div>
+            <Spin size="large"/>
         </div>
     );
 };

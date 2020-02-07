@@ -1,12 +1,15 @@
-nav{
-  grid-area: n;
-  padding: 10px;
-  background-color: #f8a5c2;
+nav {
+    grid-area: n;
+    padding: 10px;
+    background-color: #546de5;
+    box-shadow: 0 2px 8px #f0f1f2;
 }
-.item{
-	display: block;
+
+.item {
+    display: block;
 }
-.active{
-	color: #fff;
-	text-decoration: none;
+
+.active {
+    color: #fff;
+    text-decoration: none;
 }
