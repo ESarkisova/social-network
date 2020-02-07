@@ -9,6 +9,10 @@
     padding: 5px;
     cursor: pointer;
 }
+.pagination__space{
+    pointer-events: none;
+    cursor: default;
+}
 .pagination__item:hover{
     font-weight: bold;
 }

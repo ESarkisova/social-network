@@ -7,7 +7,7 @@ let Users = (props) => {
     return (
         <>
             {props.isLoading ? <Preloader/> : null}
-            <Pagination userCount = {props.userCount} pageSize = {props.pageSize} currentPage = {props.currentPage} setPage={props.setPage}/>
+            <Pagination userCount = {props.userCount} pageSize = {props.pageSize} paginationPageSize = {props.paginationPageSize} currentPage = {props.currentPage} setPage={props.setPage}/>
             {props.userList.map(u => (<User key={u.id} user={u} follow={props.follow} unfollow={props.unfollow} isFollowing = {props.isFollowing}/>))}
         </>
 

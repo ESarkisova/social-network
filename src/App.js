@@ -1,9 +1,9 @@
-import React, {Suspense} from 'react';
+import React from 'react';
 import './App.css';
 import Header from "./components/Header/HeaderContainer"
 import Nav from "./components/Nav/"
 import Profile from "./components/Profile/ProfileContainer"
-import {Route, withRouter} from "react-router-dom";
+import {Redirect, Route, Switch, withRouter} from "react-router-dom";
 import User from "./components/Users/UsersContainer";
 import {compose} from "redux";
 import {connect} from "react-redux";
@@ -23,15 +23,21 @@ class App extends React.Component {
         if(!this.props.initialized) {
             return <Preloader />;
         }
+
         return (
             <div className = "app-wrapper">
                 <Header />
                 <Nav/>
                 <main className = "content">
-                    <Route path = "/dialogs" render = { withSuspense(Dialog)} />
-                    <Route path = "/profile/:userID?" render = {() => <Profile />} />
-                    <Route path = "/users" render = {() => <User />} />
-                    <Route path = "/login" render = { withSuspense(Login)} />
+                    {this.props.errorAuth ? <h4>Возникла ошибка при запуске приложения: {this.props.errorAuth}</h4>
+                    : <Switch>
+                        <Redirect exact from = "/" to = "/profile" />
+                        <Route path = "/dialogs" render = { withSuspense(Dialog)} />
+                        <Route path = "/profile/:userID?" render = {() => <Profile />} />
+                        <Route path = "/users" render = {() => <User />} />
+                        <Route path = "/login" render = { withSuspense(Login)} />
+                    </Switch>
+                    }
                 </main>
             </div>
         );
@@ -39,7 +45,8 @@ class App extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
-        initialized: state.app.initialized
+        initialized: state.app.initialized,
+        errorAuth: state.auth.isError
     });
 
 export default compose(withRouter,connect(mapStateToProps, {initialization}))(App);

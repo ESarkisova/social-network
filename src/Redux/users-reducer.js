@@ -11,7 +11,8 @@ const FOLLOW = prefix('FOLLOW'),
 
 let initialState = {
     userList: [],
-    pageSize: 5,
+    pageSize: 10,
+    paginationPageSize: 10,
     userCount: 0,
     currentPage: 1,
     isLoading: false,
@@ -65,7 +66,7 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 isFollowing: action.isFollowing ?
                     [...state.isFollowing, action.userId]
-                    : state.isFollowing.filter(userId => (userId != action.userId))
+                    : state.isFollowing.filter(userId => (userId !== action.userId))
             };
 
         default:

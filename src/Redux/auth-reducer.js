@@ -6,13 +6,15 @@ const prefix = (actionType) => "auth/" + actionType;
 const SET_AUTH_USER = prefix('SET_AUTH_USER');
 const DEL_AUTH_USER = prefix('DEL_AUTH_USER');
 const SET_CAPTCHA = prefix('SET_CAPTCHA');
+const SET_ERROR = prefix('SET_ERROR');
 
 let initialState = {
     userId: null,
     email: null,
     login: null,
     isAuth: false,
-    captcha: null
+    captcha: null,
+    isError: null
 };
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -22,7 +24,8 @@ const authReducer = (state = initialState, action) => {
                 userId: action.userId,
                 email: action.email,
                 login: action.login,
-                isAuth: true
+                isAuth: true,
+                isError: null
             };
 
         case DEL_AUTH_USER:
@@ -38,6 +41,11 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 captcha: action.captchaURL
             };
+        case SET_ERROR:
+            return {
+                ...state,
+                isError: action.error
+            };
         default:
             return state;
     }
@@ -49,6 +57,11 @@ export const setAuthUser = (userId, email, login) => ({
     email,
     login
 });
+
+export const setError = (error) => ({
+    type: SET_ERROR,
+    error
+});
 export const delAuthUser = () => ({type: DEL_AUTH_USER});
 
 export const setCaptcha = (captchaURL) => ({
@@ -58,12 +71,15 @@ export const setCaptcha = (captchaURL) => ({
 export const authMe = () => {
     return (dispatch) => {
         return authAPI.getAuth()
+            .then(response => response.data)
             .then(data => {
                 if (data.resultCode === 0) {
                     let {id, email, login} = data.data;
                     dispatch(setAuthUser(id, email, login));
                 }
             })
+            .catch( error => {dispatch(setError(error.message));}
+            )
     };
 };
 

@@ -34,6 +34,7 @@ const ProfileInfo = ({profileInfo, status, setStatus, isOwner, setAvatar, isLoad
                         isSavingProfile = {isSavingProfile}/>
                         : <ProfileDetails
                             profileInfo = {profileInfo}
+                            isOwner={isOwner}
                             changeShowEditProfile = {changeShowEditProfile}/>}
 
                 </div>

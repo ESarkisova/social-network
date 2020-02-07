@@ -10,7 +10,6 @@ import {
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
-
 class ProfileAPI extends React.Component {
     componentDidMount() {
 
@@ -24,13 +23,13 @@ class ProfileAPI extends React.Component {
         }
     }
 
-    componentDidUpdate(nextProps, nextState) {
+    componentDidUpdate(prevProps, prevState) {
         let userID = this.props.match.params.userID || this.props.authUser,
-            userIDNext = nextProps.match.params.userID || nextProps.authUser;
-        if (!userIDNext) {this.props.history.push('/login');}
-        if (userIDNext && userIDNext != userID) {
-            this.props.getProfile(userIDNext);
-            this.props.getStatus(userIDNext);
+            userIDPrev = prevProps.match.params.userID || prevProps.authUser;
+        if (!userID) {this.props.history.push('/login');}
+        if (userID !== userIDPrev ) {
+            this.props.getProfile(userID);
+            this.props.getStatus(userID);
         }
     }
 

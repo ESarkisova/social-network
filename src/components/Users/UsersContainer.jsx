@@ -32,6 +32,7 @@ class UserAPI extends React.Component {
 let mapStateToProps = (state) => { return {
     userList: getUsersRslc(state),
     pageSize: getPageSizeSlc(state),
+    paginationPageSize: state.usersPage.paginationPageSize,
     userCount: getUserCountSlc(state),
     currentPage: getCurrentPageSlc(state),
     isLoading: getIsLoadingSlc(state),

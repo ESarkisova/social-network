@@ -3,10 +3,12 @@ import {reduxForm} from "redux-form";
 import cn from './index.module.css';
 import cnFormControl from '../common/FormComponents/index.module.css';
 import {connect} from "react-redux";
-import {setAuth} from "../../Redux/auth-reducer";
+import {getCaptcha, setAuth} from "../../Redux/auth-reducer";
 import {createField, Input} from "../common/FormComponents/FormComponents";
 import {required} from "../common/validate/validate";
 import {Redirect} from "react-router-dom";
+import refresh from "../../assets/refresh.svg";
+
 
 
 let LoginForm = (props) => {
@@ -20,6 +22,7 @@ let LoginForm = (props) => {
             </div>
             {props.captcha &&
                 <div>
+                    <button type="button" onClick={props.getCaptcha}><img src={refresh} alt="refresh"/></button>
                     <img className={cn.captcha} src={props.captcha} alt="captcha" />
                     {createField("captcha",Input, "",[required],{type: "text"})}
                 </div>
@@ -33,7 +36,7 @@ let LoginForm = (props) => {
 
 
 
-            <button>Login</button>
+            <button type="submit">Login</button>
         </form>
     )
 };
@@ -53,7 +56,7 @@ let Login = (props) => {
     return (
             <div className={cn.login__wrapp}>
                 <h1>Введите, пожалуйста, логин и пароль</h1>
-                <LoginFormRedux onSubmit={onSubmit} captcha = {props.captcha}/>
+                <LoginFormRedux onSubmit={onSubmit} captcha = {props.captcha} getCaptcha={props.getCaptcha}/>
             </div>
         )
 
@@ -70,4 +73,4 @@ let mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps, {setAuth})(Login);
+export default connect(mapStateToProps, {setAuth, getCaptcha})(Login);
