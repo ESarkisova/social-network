@@ -1,27 +1,30 @@
 import React from "react";
-import {createField, Input, Textarea} from "../../../common/FormComponents/FormComponents";
+import {createField, InputField, TextareaField} from "../../../common/FormComponents/FormComponents";
 import cnFormControl from "../../../common/FormComponents/index.module.css";
 import {reduxForm} from "redux-form";
 import cn from "../index.module.css";
 import {required} from "../../../common/validate/validate";
+import {Button, Divider, Typography} from 'antd';
+
+const {Text} = Typography;
 
 const ProfileDetailsForm = (props) => {
 
     return (
         <form onSubmit={props.handleSubmit} className={props.isSavingProfile ? cn.loading : ''}>
             <div className={cn.fieldWrap}>
-                <b>Полное имя: </b>
-                {createField("fullName",Input, "Введите имя...",[required],{type: "text"})}</div>
+                <Text strong>Полное имя: </Text>
+                {createField("fullName",InputField, "Введите имя...",[required],{type: "text"})}</div>
             <div className={cn.fieldWrap}>
-                <b>Обо мне: </b>
-                {createField("aboutMe",Textarea, "Напишите кратко о себе...",[required],)}</div>
+                <Text strog>Обо мне: </Text>
+                {createField("aboutMe",TextareaField, "Напишите кратко о себе...",[required],)}</div>
             <div className={cn.fieldWrap}>
-                <b>Ищу работу: </b>
-                {createField("lookingForAJob",Input, "",[],{type: "checkbox"})}</div>
+                <Text strong>Ищу работу: </Text>
+                {createField("lookingForAJob",InputField, "",[],{type: "checkbox"})}</div>
             <div className={cn.fieldWrap}>
-                <b>Ищу работу - описание: </b>
-                {createField("lookingForAJobDescription",Textarea, "Укажите профессиональные навыки...",[required],)}</div>
-            <b>Контакты: </b><br/>
+                <Text strong>Ищу работу - описание: </Text>
+                {createField("lookingForAJobDescription",TextareaField, "Укажите профессиональные навыки...",[required],)}</div>
+            <Text strong>Контакты: </Text><br/>
             <div className={cn.fieldWrap}>
                 {Object.keys(props.profileInfo.contacts).map((key) => {
                     return <Contact key = {key} contactName = {key} />
@@ -33,9 +36,9 @@ const ProfileDetailsForm = (props) => {
             </ul>
             }
 
-            <hr/>
+            <Divider/>
 
-            <button className={cn.detailsEditButton}>Сохранить</button>
+            <Button type={"primary"} htmlType={"submit"} className={cn.detailsEditButton}>Сохранить</Button>
         </form>
     )
 
@@ -44,8 +47,8 @@ const ProfileDetailsForm = (props) => {
 const Contact = ({contactName}) => {
     return (
         <>
-            <b>Ссылка на: {contactName} </b>
-            {createField("contacts."+contactName,Input, "",[],{type: "text"})}
+             <Text code> {contactName}</Text>
+            {createField("contacts."+contactName,InputField, "",[],{type: "text"})}
          </>
     )
 };

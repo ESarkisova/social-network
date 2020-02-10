@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import cn from '../index.module.css';
+import {Input} from "antd";
 
 const ProfileStatus = (props) => {
     let [editStatusMode, setEditStatusMode] = useState(false);
@@ -9,7 +10,7 @@ const ProfileStatus = (props) => {
         setStatus(props.status);
     }, [props.status] );
 
-    const toggleEditStatusMode = (e) => {
+    const toggleEditStatusMode = () => {
         if(editStatusMode) {
             props.setStatus(status)
         }
@@ -24,7 +25,7 @@ const ProfileStatus = (props) => {
         return <div className={cn.status}>
             {props.isOwner?
                 editStatusMode ?
-                    <input type="text"  value={status} autoFocus={true} onBlur={toggleEditStatusMode} onChange={onChangeStatusText}/>
+                    <Input type="text"  value={status} autoFocus={true} onBlur={toggleEditStatusMode} onChange={onChangeStatusText}/>
                     : <span onDoubleClick={toggleEditStatusMode}>{status || "Input your status..."}</span>
                 : <span>{status}</span>
             }

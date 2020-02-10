@@ -1,14 +1,17 @@
 import React from 'react';
 import cn from './index.module.css';
+import {Avatar, Typography} from "antd";
+
+const { Text } =  Typography;
 
 const Post = ({ava, text}) => {
 
     return (
         <div className={cn.post}>
-            <div className={cn.ava}>
-                <img src={ava} alt=""/>
-            </div>
-            <div className={cn.post}>{text}</div>
+            { cn.ava ?
+                <Avatar  size="large"  src={ava} alt="" />
+            : <Avatar size="large" icon="user" />}
+            <Text>{text}</Text>
         </div>
     );
 };

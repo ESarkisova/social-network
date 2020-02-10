@@ -5,6 +5,7 @@
 	display: -o-flex;
 	display: flex;
 	color: #fff;
+	margin: 8px 0;
 }
 .ava img{
 	width: 40px;

@@ -19,7 +19,7 @@ let initialState = {
             id: 1,
             likes: 1,
             text: "Hi post",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuPW0HsI_bYceB2aH6y7h3tZuFJj3u0K-8HsbvlWpDU1SbY5-I"
+            img: null
         },
         {
             id: 2,

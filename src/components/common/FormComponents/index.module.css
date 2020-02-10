@@ -10,12 +10,12 @@
 }
 .formControl.error input,
 .formControl.error textarea {
-    border-color: red;
+    border-color: #c44569;
 }
 .errorMessage {
     display: block;
-    color: red;
+    color: #c44569;
     font-size: 12px;
     margin: 0;
-    padding: 5px 0px;
+    padding: 5px 0;
 }

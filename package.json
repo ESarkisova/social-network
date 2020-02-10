@@ -41,8 +41,9 @@
     ]
   },
   "devDependencies": {
+    "customize-cra": "^0.9.1",
     "gh-pages": "^2.1.1",
-    "less": "^3.10.3",
+    "less": "^3.11.0",
     "less-loader": "^5.0.0",
     "react-test-renderer": "^16.12.0"
   }

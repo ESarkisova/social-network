@@ -3,7 +3,7 @@ import cn from './index.module.css';
 import Dialog from "./Dialog/";
 import Message from "./Message/";
 import {reduxForm} from "redux-form";
-import {createField, Textarea} from "../common/FormComponents/FormComponents";
+import {createField, TextareaField} from "../common/FormComponents/FormComponents";
 import {maxValueCreator, required} from "../common/validate/validate";
 
 const maxLength50 = maxValueCreator(50);
@@ -11,7 +11,7 @@ const maxLength50 = maxValueCreator(50);
 let AddMessageForm = (props) => {
     return (
         <form onSubmit = {props.handleSubmit} className={cn.messageAdd}>
-            {createField("newMessage", Textarea, "Enter your text...",[required, maxLength50])}
+            {createField("newMessage", TextareaField, "Enter your text...",[required, maxLength50])}
             <div>
                 <button>Add message</button>
             </div>

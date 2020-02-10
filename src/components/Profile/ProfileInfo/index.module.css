@@ -60,14 +60,14 @@
     left: 35px;
 }
 .name{
-    margin: 10px 10px 0px 20px;
+    margin: 10px 10px 0 20px;
 	font-size: 30px;
 	font-weight: bold;
 	color: #6f5d5d;
 }
 .details{
 	position: relative;
-	width: 35%;
+	width: 40%;
 	font-size: 14px;
 }
 
@@ -95,13 +95,13 @@
 	object-fit: contain;
 }
 .contactsItem {
-	margin: 3px 0px;
+	margin: 3px 0;
 	padding: 0 0 0 10px;
 }
 .detailsEditButton{
 	position: absolute;
 	right: 0;
-	bottom: -1px;
+	bottom: 11px;
 	outline: none;
 	border: none;
 	background-color: #ffa500;
@@ -111,10 +111,15 @@
 }
 .fieldWrap{
 	display: flex;
-	margin: 0px 0px 10px 0px;
+	margin: 0 0 10px 0;
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
 .fieldWrap > *{
-	width: 50%;
+	margin-bottom: 6px;
 }
+.fieldWrap > *:nth-child(odd){
+	width: 35%;
+}.fieldWrap > *:nth-child(even){
+	 width: 65%;
+ }
