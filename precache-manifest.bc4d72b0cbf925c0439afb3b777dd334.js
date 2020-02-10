@@ -1,43 +1,43 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "82cd534e2a454894ad8ba7966feb7c0a",
+    "revision": "faa35e33b1b5f7245725de30d24a602f",
     "url": "/social-network/index.html"
   },
   {
-    "revision": "d1ca3c81b861863ac99b",
+    "revision": "27749170b2b76650e6ec",
     "url": "/social-network/static/css/4.6e9142dc.chunk.css"
   },
   {
-    "revision": "1fd5a66b6cbae3f49a6f",
+    "revision": "57cfa3ce5f21ae624c37",
     "url": "/social-network/static/css/5.d45e6d19.chunk.css"
   },
   {
-    "revision": "a410b04aecfeefa0ef20",
+    "revision": "a313cbe1231a15d464d2",
     "url": "/social-network/static/css/main.c73ca132.chunk.css"
   },
   {
-    "revision": "a9d6df7b60d18257fd9e",
-    "url": "/social-network/static/js/2.5a874887.chunk.js"
+    "revision": "d49aa181904a850fbe07",
+    "url": "/social-network/static/js/2.04b22710.chunk.js"
   },
   {
-    "revision": "d728971e698a7a4cf63d",
-    "url": "/social-network/static/js/3.e0afb3be.chunk.js"
+    "revision": "db1efb54c4f45e02d429",
+    "url": "/social-network/static/js/3.c4941262.chunk.js"
   },
   {
-    "revision": "d1ca3c81b861863ac99b",
-    "url": "/social-network/static/js/4.8c5abd7d.chunk.js"
+    "revision": "27749170b2b76650e6ec",
+    "url": "/social-network/static/js/4.dee91267.chunk.js"
   },
   {
-    "revision": "1fd5a66b6cbae3f49a6f",
-    "url": "/social-network/static/js/5.154ad2a5.chunk.js"
+    "revision": "57cfa3ce5f21ae624c37",
+    "url": "/social-network/static/js/5.5a5ed1ca.chunk.js"
   },
   {
-    "revision": "a410b04aecfeefa0ef20",
-    "url": "/social-network/static/js/main.187db6dc.chunk.js"
+    "revision": "a313cbe1231a15d464d2",
+    "url": "/social-network/static/js/main.b31c449f.chunk.js"
   },
   {
-    "revision": "05aeec07c5f552847165",
-    "url": "/social-network/static/js/runtime-main.4389a5ae.js"
+    "revision": "8a903b00a9396ed16ce2",
+    "url": "/social-network/static/js/runtime-main.074bb451.js"
   },
   {
     "revision": "3d3e56e7a6385bcbeb822a1818a6c6c1",
