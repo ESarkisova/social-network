@@ -5,15 +5,18 @@ import Message from "./Message/";
 import {reduxForm} from "redux-form";
 import {createField, TextareaField} from "../common/FormComponents/FormComponents";
 import {maxValueCreator, required} from "../common/validate/validate";
+import {Button, Typography} from "antd";
+
+const { Title } = Typography;
 
 const maxLength50 = maxValueCreator(50);
 
 let AddMessageForm = (props) => {
     return (
         <form onSubmit = {props.handleSubmit} className={cn.messageAdd}>
-            {createField("newMessage", TextareaField, "Enter your text...",[required, maxLength50])}
+            {createField("newMessage", TextareaField, "Введите текст сообщения...",[required, maxLength50])}
             <div>
-                <button>Add message</button>
+                <Button type={"primary"}>Добавить сообщение</Button>
             </div>
         </form>
     )
@@ -33,7 +36,7 @@ const Dialogs = (props) => {
     return (
         <div className={cn.dialogs__wrapper}>
             <div className={cn.dialogs__names}>
-                <h2>Names</h2>
+                <Title level={2}>Диалоги</Title>
                 <div>
                     {
                         dialogElements

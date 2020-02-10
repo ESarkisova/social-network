@@ -4,6 +4,9 @@ import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import ProfileAvatar from "./ProfileAvatar/ProfileAvatar";
 import ProfileDetails from "./ProfileDetails/ProfileDetails";
 import ProfileDetailsForm from "./ProfileDetails/ProfileDetailsForm";
+import {Typography} from "antd";
+
+const { Title } = Typography;
 
 const ProfileInfo = ({profileInfo, status, setStatus, isOwner, setAvatar, isLoadingAvatar, setProfile, showEditProfile, changeShowEditProfile, isSavingProfile}) => {
 
@@ -22,7 +25,7 @@ const ProfileInfo = ({profileInfo, status, setStatus, isOwner, setAvatar, isLoad
                         isOwner={isOwner}
                         setAvatar={setAvatar} />
                     <div>
-                        <h2 className={cn.name}>{profileInfo.fullName}</h2>
+                        <Title level={2} className={cn.name}>{profileInfo.fullName}</Title>
                         <ProfileStatus status={status} setStatus = {setStatus} isOwner = {isOwner}/>
                     </div>
                 </div>

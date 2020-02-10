@@ -9,7 +9,7 @@
 .dialogs__names{
 	width: 40%;
 	padding: 10px;
-	background-color: #f5cd79;
+	background-color: #ffffff;
 }
 .dialogs__messages{
 	width: 60%;
@@ -22,4 +22,8 @@
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
+}
+.dialogs__user{
+	display: block;
+	margin: 10px 0;
 }

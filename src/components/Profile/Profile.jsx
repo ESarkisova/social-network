@@ -16,9 +16,9 @@ let NewPostForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                {createField("newPost", TextareaField,"Add new post...",[required, maxLength50])}
+                {createField("newPost", TextareaField,"Введите текст...",[required, maxLength50])}
             </div>
-            <Button type={"primary"}>Add post</Button>
+            <Button type={"primary"}>Добавить пост</Button>
         </form>
     )
 };

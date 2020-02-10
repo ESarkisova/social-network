@@ -11,7 +11,7 @@ let initialState = {
             name: "Sveta",
             ava: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLQH5fsQDLH3DZjPBQE0dvFa5fx-XaSo3yiMdLP6SI9_3ZAMv5&s"
         },
-        {id: 3, name: "Petya", ava: "https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg"}
+        {id: 3, name: "Petya", ava: null}
     ],
     messageList: [
         {id: 1, text: "Hi"},

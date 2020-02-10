@@ -1,13 +1,17 @@
 import React from 'react';
 import cn from '../index.module.css';
 import {NavLink} from "react-router-dom";
+import {Avatar, Typography} from "antd";
 
+const {Text} = Typography;
 const Dialog = ({id, ava, name}) => {
     return (
         <div>
-            <NavLink to={"/dialogs/"+id} className={cn.dialogs__nameActive}>
-                <img src={ava} alt="ava" className={cn.dialogs__avatar}/>
-                {name}
+            <NavLink to={"/dialogs/"+id} className={cn.dialogs__user}>
+                {ava ?
+                    <Avatar size = "large" src={ava} alt="ava" />
+                    :<Avatar size="large" icon="user" />}
+                <Text> {name}</Text>
             </NavLink>
         </div>
     );

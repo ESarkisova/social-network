@@ -1,3 +1,15 @@
+.pagination__wrap {
+    margin: 20px;
+    text-align: center;
+}
+.users__wrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.users__wrap > * {
+    margin: 10px;
+}
 .user__wrap{
     display: flex;
     padding: 15px;
@@ -15,24 +27,11 @@
     border-radius: 50%;
 }
 .user__follow{
-    display: block;
-    margin: auto;
-    padding: 10px;
-    width: 110px;
-    background-color: #f78fb3;
+    margin: 10px auto 0;
+    background-color: #ffa500;
     border: none;
-    outline: none;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #fff;
 }
-.user__follow:hover{
-    cursor: pointer;
-}
-.user__follow:disabled{
-    opacity: .5;
-    pointer-events: none;
-}
+
 .user__info{
     display: flex;
     width: 75%;
