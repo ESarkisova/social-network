@@ -25,13 +25,13 @@ let initialState = {
             id: 2,
             likes: 5,
             text: "Hi-hi post",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuPW0HsI_bYceB2aH6y7h3tZuFJj3u0K-8HsbvlWpDU1SbY5-I"
+            img: null
         },
         {
             id: 3,
             likes: 6,
             text: "hi post!",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuPW0HsI_bYceB2aH6y7h3tZuFJj3u0K-8HsbvlWpDU1SbY5-I"
+            img: null
         }
     ],
     profileInfo: null,

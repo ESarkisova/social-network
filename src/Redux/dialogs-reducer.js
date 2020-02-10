@@ -5,11 +5,11 @@ const prefix = (actionType) => "dialogs/" + actionType;
 const ADD_MESSAGE = prefix('ADD_MESSAGE');
 let initialState = {
     dialogList: [
-        {id: 1, name: "Lena", ava: "https://igate.com.ua/upload/photo/0001/0001/3383/6955/55.jpg"},
+        {id: 1, name: "Lena", ava: null},
         {
             id: 2,
             name: "Sveta",
-            ava: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLQH5fsQDLH3DZjPBQE0dvFa5fx-XaSo3yiMdLP6SI9_3ZAMv5&s"
+            ava: null
         },
         {id: 3, name: "Petya", ava: null}
     ],
